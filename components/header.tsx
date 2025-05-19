@@ -20,11 +20,12 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
-                src="/placeholder.svg?height=40&width=150"
+                src="/images/mainlogo_millic.png"
                 alt="milli-c Logo"
-                width={150}
-                height={40}
-                className="h-10 w-auto"
+                width={200}
+                height={50}
+                priority
+                className="h-12 w-auto"
               />
             </Link>
           </div>
