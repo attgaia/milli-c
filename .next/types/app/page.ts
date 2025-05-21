@@ -1,4 +1,4 @@
-// File: /Users/shinyamurayama/Documents/2025Clients/milli-c/app/page.tsx
+// File: C:\Users\rerin\OneDrive\ドキュメント\GitHub\milli-c\app\page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -1,4 +1,4 @@
-// File: /Users/shinyamurayama/Documents/2025Clients/milli-c/app/layout.tsx
+// File: C:\Users\rerin\OneDrive\ドキュメント\GitHub\milli-c\app\layout.tsx
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

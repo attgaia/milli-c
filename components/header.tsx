@@ -36,8 +36,24 @@ export default function Header() {
                 milli-cとは？
               </Link>
               <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
+                サービス内容
+              </Link>
+              <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
                 検査の流れ
               </Link>
+              <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
+                よくある質問
+              </Link>
+              <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
+                特設ページ
+              </Link>
+              <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
+                お問い合わせ
+              </Link>
+              <Link href="/for-clinics" className="text-gray-700 hover:text-primary font-medium">
+                医療関係の皆様へ
+              </Link>
+              {/* 使用しないメニュー項目
               <Link href="/results" className="text-gray-700 hover:text-primary font-medium">
                 検査でわかること
               </Link>
@@ -50,6 +66,7 @@ export default function Header() {
               <Link href="/faq" className="text-gray-700 hover:text-primary font-medium">
                 よくある質問
               </Link>
+              */}
             </nav>
           </div>
 
