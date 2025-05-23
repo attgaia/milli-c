@@ -39,16 +39,11 @@ export default function Home() {
             がん細胞1ミリ以下でも検出可能。超早期発見・予防であなたの健康を守る
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg">
-              30秒で予約
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white/10 font-bold text-lg"
-            >
-              カウンセリング（有料）を申し込む
-            </Button>
+            <Link href="/reserve">
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg">
+                検査予約へ
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -58,54 +53,77 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">milli-cとは？</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 text-center">
-                <div className="mx-auto mb-6 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Dna className="w-8 h-8 text-primary" />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+            <div className="order-2 lg:order-1">
+              <h3 className="text-2xl font-bold mb-6">超早期がん発見の新技術</h3>
+              <p className="text-gray-600 mb-6">
+                milli-cは、日本発の最先端技術「TMCA（Tumor Marker Cell Analysis）」を活用し、
+                がん細胞が1ミリ以下でも検出可能な超早期がん発見システムです。 
+                従来の検査では見つけられなかった微小ながん細胞を、高精度で検出します。
+              </p>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">87.5%の高精度でがんリスクを判定</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">微小ながん細胞も検出可能</h3>
-                <p className="text-gray-600">1ミリ以下の超早期がん細胞を高精度で検出し、治療ではなく予防へ</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 text-center">
-                <div className="mx-auto mb-6 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                  <CheckCircle className="w-8 h-8 text-primary" />
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">血液と少量の尿だけで簡単検査</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">87.5%の確率で予知</h3>
-                <p className="text-gray-600">最新の検査技術により、高確率で早期がんリスクを判定</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 text-center">
-                <div className="mx-auto mb-6 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                  <TestTube className="w-8 h-8 text-primary" />
+                <div className="flex items-start">
+                  <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <p className="text-gray-700">最短6日で結果をお届け</p>
                 </div>
-                <h3 className="text-xl font-bold mb-3">血液と少量の尿だけでOK</h3>
-                <p className="text-gray-600">侵襲性の低い簡単な検査で、体への負担を最小限に</p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 text-center">
-                <div className="mx-auto mb-6 w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Search className="w-8 h-8 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold mb-3">日本発の最先端技術</h3>
-                <p className="text-gray-600">日本で開発された最先端の遺伝子解析技術を活用</p>
-              </CardContent>
-            </Card>
+                
+              </div>
+            </div>
+            <div className="order-1 lg:order-2">
+              <div className="relative aspect-square max-w-md mx-auto">
+                <Image
+                  src="/placeholder.svg?height=500&width=500"
+                  alt="TMCA技術のイメージ"
+                  fill
+                  className="object-cover rounded-xl shadow-xl"
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/about">
-              <Button variant="outline" className="group">
-                もっと詳しく <ChevronRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </Link>
+          <div className="bg-primary/5 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold mb-6 text-center">TMCA技術とは？</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Dna className="w-8 h-8 text-primary" />
+                </div>
+                <h4 className="font-bold mb-2">遺伝子解析</h4>
+                <p className="text-gray-600">がん関連遺伝子の変異を高精度で検出</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <TestTube className="w-8 h-8 text-primary" />
+                </div>
+                <h4 className="font-bold mb-2">バイオマーカー</h4>
+                <p className="text-gray-600">独自のバイオマーカーで微小ながん細胞を特定</p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="w-8 h-8 text-primary" />
+                </div>
+                <h4 className="font-bold mb-2">AI分析</h4>
+                <p className="text-gray-600">AIによる高度なデータ分析で精度を向上</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center">
+            <div className="mt-4">
+              <Link href="/about">
+                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 font-bold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  詳しく見る
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -173,8 +191,10 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-16">
-            <Link href="/process">
-              <Button>検査の流れについて詳しく見る</Button>
+            <Link href="/flow">
+                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 font-bold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                  詳しく見る
+                </Button>
             </Link>
           </div>
         </div>
@@ -209,8 +229,10 @@ export default function Home() {
               </div>
 
               <div className="mt-8">
-                <Link href="/results">
-                  <Button>検査でわかることの詳細へ</Button>
+                <Link href="/result-coverage">
+                    <Button size="lg" className="bg-primary text-white hover:bg-primary/90 font-bold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                      詳しく見る
+                    </Button>
                 </Link>
               </div>
             </div>
@@ -260,44 +282,6 @@ export default function Home() {
                 <div className="flex items-start">
                   <div className="mr-4 mt-1">
                     <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Clock className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">40歳以上で健康診断を受けていない方</h3>
-                    <p className="text-gray-600">
-                      40歳を過ぎるとがんリスクが徐々に高まります。定期的な健康診断を受けていない方は
-                      特にリスク評価が重要です。
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start">
-                  <div className="mr-4 mt-1">
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <Search className="w-5 h-5 text-primary" />
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold mb-2">健康リスクを事前に知りたい方</h3>
-                    <p className="text-gray-600">
-                      予防医療に関心がある方、健康維持に積極的な方に適しています。
-                      数値で健康状態を把握し、リスクに応じた生活改善ができます。
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
-              <CardContent className="p-8">
-                <div className="flex items-start">
-                  <div className="mr-4 mt-1">
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
                       <TestTube className="w-5 h-5 text-primary" />
                     </div>
                   </div>
@@ -315,111 +299,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 料金プラン */}
-      <section id="pricing" className="py-20 bg-white">
+      {/* milli-cに関する「3つの安心」 */}
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">料金プラン</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">milli-cに関する「3つの安心」</h2>
 
-          <div className="max-w-3xl mx-auto">
-            <Card className="border-none shadow-xl overflow-hidden">
-              <div className="bg-primary text-white p-6 text-center">
-                <h3 className="text-2xl font-bold">基本プラン（がんリスク判定）</h3>
-                <p className="text-lg opacity-90 mt-2">最先端の技術で健康リスクを管理</p>
-              </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
               <CardContent className="p-8">
-                <div className="text-center mb-8">
-                  <span className="text-4xl font-bold">¥145,000</span>
-                  <span className="text-gray-500 ml-2">(税込)</span>
-                </div>
-
-                <div className="space-y-4">
-                  <div className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700">血液・尿検査による詳細なリスク判定</p>
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <Users className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700">9段階でのリスク評価レポート</p>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700">健康維持のためのアドバイス</p>
-                  </div>
-                  <div className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-primary mr-3 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-700">生活習慣改善ガイド</p>
-                  </div>
-                </div>
-
-                <div className="mt-8 text-gray-500 border-t pt-4">
-                  <p className="mb-2">※ カウンセリング（有料：¥10,000/回）はオプションです</p>
-                  <p>※ 現在、先着50名様限定で特別価格でご提供中</p>
-                </div>
-
-                <div className="mt-8 text-center">
-                  <Link href="/pricing">
-                    <Button size="lg" className="px-8">
-                      料金の詳細を見る
-                    </Button>
-                  </Link>
+                  <h3 className="text-xl font-bold mb-4">臨床検査技師の監修あり</h3>
+                  <p className="text-gray-600">
+                    経験豊富な臨床検査技師が検査プロセスを監修。
+                    確かな技術と知識で、正確な検査結果をお届けします。
+                  </p>
                 </div>
               </CardContent>
             </Card>
-          </div>
-        </div>
-      </section>
 
-      {/* クリニック検索 */}
-      <section id="clinics" className="py-20 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">クリニック検索</h2>
-
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <p className="text-lg text-gray-600">
-              全国の提携クリニックから、お近くの医療機関を検索できます。
-              エリアを選択して、予約可能なクリニックをお探しください。
-            </p>
-          </div>
-
-          <div className="flex justify-center mb-12">
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              {["北海道", "東北", "関東", "中部", "関西", "中国・四国", "九州・沖縄"].map((area) => (
-                <Button key={area} variant="outline" className="w-full">
-                  {area}
-                </Button>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3].map((clinic) => (
-              <Card key={clinic} className="border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-2">milli-c提携クリニック{clinic}</h3>
-                  <div className="flex items-start mb-4">
-                    <MapPin className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-600">東京都渋谷区○○町1-2-3</p>
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+              <CardContent className="p-8">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <MapPin className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="flex items-start mb-4">
-                    <Clock className="w-5 h-5 text-primary mr-2 mt-0.5 flex-shrink-0" />
-                    <p className="text-gray-600">
-                      9:00〜18:00（月・水・金）
-                      <br />
-                      10:00〜17:00（土）
-                    </p>
-                  </div>
-                  <Button className="w-full mt-4">予約する</Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+                  <h3 className="text-xl font-bold mb-4">提携医療機関と連携</h3>
+                  <p className="text-gray-600">
+                    全国の信頼できる医療機関と提携。
+                    検査から結果説明まで、一貫した医療サービスを提供します。
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
 
-          <div className="text-center mt-12">
-            <Link href="/clinics">
-              <Button variant="outline" size="lg">
-                すべてのクリニックを見る
-              </Button>
-            </Link>
+            <Card className="border-none shadow-md hover:shadow-lg transition-shadow">
+              <CardContent className="p-8">
+                <div className="flex flex-col items-center text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
+                    <FileCheck className="w-8 h-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">国内特許技術＋関連論文掲載</h3>
+                  <p className="text-gray-600">
+                    独自の特許技術と科学的根拠に基づく検査。
+                    学術論文での裏付けにより、信頼性の高い結果を提供します。
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -519,35 +448,47 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <Link href="/testimonials">
+            <Link href="/voices">
               <Button>すべての体験談を見る</Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">健康な未来は早期発見から</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            あなたの大切な健康を守るために、milli-cの超早期がん検査を今すぐ予約しましょう。
-            1ミリ以下のがん細胞を検出できる技術で、あなたの明日を守ります。
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg">
-              30秒で予約
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white/10 font-bold text-lg"
-            >
-              カウンセリング（有料）を申し込む
-            </Button>
+
+      {/* 固定特設ページバナー */}
+      <div className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 z-50">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between py-4">
+            <div className="flex items-center space-x-4">
+              <div className="hidden md:flex items-center space-x-4">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Calendar className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-bold text-primary">早期予約キャンペーン実施中</p>
+                  <p className="text-sm text-gray-600">初回検査料金が20%OFF</p>
+                </div>
+              </div>
+              <div className="hidden md:flex items-center space-x-4">
+                <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                  <Clock className="w-5 h-5 text-primary" />
+                </div>
+                <div>
+                  <p className="font-bold text-primary">期間限定特典</p>
+                  <p className="text-sm text-gray-600">結果説明カウンセリング無料</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex items-center space-x-4">
+              <p className="hidden md:block text-sm text-gray-500">※ キャンペーン期間：2024年4月30日まで</p>
+              <Button size="lg" className="bg-primary text-white hover:bg-primary/90">
+                特設ページへ
+              </Button>
+            </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   )
 }

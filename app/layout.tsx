@@ -1,37 +1,39 @@
-import type React from "react"
-import { Inter } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
-import Header from "@/components/header"
-import Footer from "@/components/footer"
-import "@/app/globals.css"
+import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
+import './globals.css';
+import { Toaster } from '@/components/ui/toaster';
+import { AuthProvider } from '@/components/AuthProvider';
+import Header from '@/components/header';
+import Footer from '@/components/footer';
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ['latin'] });
 
-export const metadata = {
-  title: "milli-c | がん超早期発見サービス",
-  description:
-    "1ミリ以下のがん細胞を検出可能な最先端検査サービス。血液と尿だけの簡単検査でがんリスクを9段階で判定します。",
-    generator: 'v0.dev'
-}
+export const metadata: Metadata = {
+  title: 'クリニック予約',
+  description: 'オンラインで簡単に予約できるクリニック予約システム',
+};
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="ja" suppressHydrationWarning>
+    <html lang="ja">
       <body className={inter.className}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </ThemeProvider>
+        <AuthProvider>
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">
+              {children}
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+        </AuthProvider>
       </body>
     </html>
-  )
+  );
 }
-
-
 
 import './globals.css'

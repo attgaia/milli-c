@@ -35,7 +35,7 @@ export default function Header() {
               <Link href="/about" className="text-gray-700 hover:text-primary font-medium">
                 milli-cとは？
               </Link>
-              <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
+              <Link href="/service" className="text-gray-700 hover:text-primary font-medium">
                 サービス内容
               </Link>
               <Link href="/flow" className="text-gray-700 hover:text-primary font-medium">
@@ -90,7 +90,7 @@ export default function Header() {
               milli-cとは？
             </Link>
             <Link
-              href="/process"
+              href="/service"
               className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
@@ -131,9 +131,11 @@ export default function Header() {
             >
               医療関係の皆様へ
             </Link>
-            <div className="mt-3 px-3">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
-            </div>
+            <Link href="/reserve">
+              <div className="mt-3 px-3">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
+              </div>
+            </Link>
           </div>
         </div>
       )}
