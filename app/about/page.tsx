@@ -27,7 +27,7 @@ export default function AboutPage() {
                   <p className="text-gray-700">
                     <span className="font-bold">がんは原因不明の病気ではなく、事前に防げる</span>
                     <br />
-                    遺伝子解析と最新のバイオマーカー技術で早期発見
+                    遺伝子解析と最新のバイオマーカー技術で早期発見！
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -35,7 +35,7 @@ export default function AboutPage() {
                   <p className="text-gray-700">
                     <span className="font-bold">1ミリ以下のがん細胞を検出可能</span>
                     <br />
-                    従来の検査では見つけられなかった超微小ながんの兆候を発見
+                    従来の検査では見つけられなかった超微小ながんの兆候を発見！
                   </p>
                 </div>
                 <div className="flex items-start">
@@ -43,7 +43,7 @@ export default function AboutPage() {
                   <p className="text-gray-700">
                     <span className="font-bold">健康状態を9段階で判定</span>
                     <br />
-                    詳細なリスク評価により、個別の予防策の提案が可能
+                    詳細なリスク評価により、個別の予防策の提案が可能！
                   </p>
                 </div>
               </div>

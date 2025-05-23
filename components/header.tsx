@@ -36,25 +36,27 @@ export default function Header() {
                 milli-cとは？
               </Link>
               <Link href="/process" className="text-gray-700 hover:text-primary font-medium">
+                サービス内容
+              </Link>
+              <Link href="/flow" className="text-gray-700 hover:text-primary font-medium">
                 検査の流れ
-              </Link>
-              <Link href="/results" className="text-gray-700 hover:text-primary font-medium">
-                検査でわかること
-              </Link>
-              <Link href="/pricing" className="text-gray-700 hover:text-primary font-medium">
-                検査料金
-              </Link>
-              <Link href="/clinics" className="text-gray-700 hover:text-primary font-medium">
-                提携クリニック
               </Link>
               <Link href="/faq" className="text-gray-700 hover:text-primary font-medium">
                 よくある質問
               </Link>
+              <Link href="/special" className="text-gray-700 hover:text-primary font-medium">
+                特設ページ
+              </Link>
+              <Link href="/contact" className="text-gray-700 hover:text-primary font-medium">
+                お問い合わせ
+              </Link>
+              <Link href="/for-clinics" className="text-white hover:text-white/90 font-medium fixed right-0 top-1/2 -translate-y-1/2 bg-primary px-4 py-6 rounded-l-md shadow-sm [writing-mode:vertical-rl]">
+                医療関係の皆様へ
+              </Link>
             </nav>
           </div>
-
           <div className="hidden md:block">
-            <Button className="ml-4">検査予約</Button>
+            <Button className="ml-4 bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
           </div>
 
           <div className="md:hidden">
@@ -92,28 +94,14 @@ export default function Header() {
               className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
+              サービス内容
+            </Link>
+            <Link
+              href="/flow"
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
               検査の流れ
-            </Link>
-            <Link
-              href="/results"
-              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              検査でわかること
-            </Link>
-            <Link
-              href="/pricing"
-              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              検査料金
-            </Link>
-            <Link
-              href="/clinics"
-              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              提携クリニック
             </Link>
             <Link
               href="/faq"
@@ -122,8 +110,29 @@ export default function Header() {
             >
               よくある質問
             </Link>
+            <Link
+              href="/special"
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              特設ページ
+            </Link>
+            <Link
+              href="/contact"
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              お問い合わせ
+            </Link>
+            <Link
+              href="/for-clinics"
+              className="text-gray-700 hover:text-primary block px-3 py-2 rounded-md font-medium"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              医療関係の皆様へ
+            </Link>
             <div className="mt-3 px-3">
-              <Button className="w-full">検査予約</Button>
+              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
             </div>
           </div>
         </div>
