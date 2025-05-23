@@ -39,9 +39,11 @@ export default function Home() {
             がん細胞1ミリ以下でも検出可能。超早期発見・予防であなたの健康を守る
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg">
-              検査予約へ
-            </Button>
+            <Link href="/reserve">
+              <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg">
+                検査予約へ
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

@@ -131,9 +131,11 @@ export default function Header() {
             >
               医療関係の皆様へ
             </Link>
-            <div className="mt-3 px-3">
-              <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
-            </div>
+            <Link href="/reserve">
+              <div className="mt-3 px-3">
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
+              </div>
+            </Link>
           </div>
         </div>
       )}

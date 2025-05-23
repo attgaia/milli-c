@@ -179,10 +179,12 @@ export default function ServicePage() {
       <section className="text-center">
         <h2 className="text-3xl font-semibold mb-4">ご不明な点がございましたら</h2>
         <p className="mb-8">お気軽にお問い合わせください</p>
-        <Button size="lg">
-          お問い合わせ
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </Button>
+        <Link href="/contact">
+          <Button size="lg">
+            お問い合わせ
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
       </section>
     </div>
   );
