@@ -2,11 +2,11 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { CheckCircle, AlertCircle } from "lucide-react"
+import { CheckCircle, AlertCircle, ArrowRight } from "lucide-react"
 
 export const metadata = {
-  title: "milli-cとは？ | がん超早期発見サービス",
-  description: "1ミリ以下のがん細胞を検出可能な最先端検査サービス、milli-cの詳細をご紹介します。",
+  title: "m-cで分かること | がん超早期発見サービス",
+  description: "TMCA技術による1ミリ以下のがん細胞検出と、がんの一生を理解するための詳細な説明をご紹介します。",
 }
 
 export default function AboutPage() {
@@ -17,33 +17,34 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">milli-cとは？</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">m-cで分かること</h1>
               <p className="text-xl text-gray-700 mb-8">
-                milli-cは、1ミリ以下の微小ながん細胞でも検出可能な、 日本発の最先端がん超早期発見検査サービスです。
+                がんは「治療する病気」から「予防できる状態」へ。
+                TMCA技術による超早期発見で、あなたの健康をコントロールしましょう。
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    <span className="font-bold">がんは原因不明の病気ではなく、事前に防げる</span>
+                    <span className="font-bold">1ミリ以下のがん細胞を検出</span>
                     <br />
-                    遺伝子解析と最新のバイオマーカー技術で早期発見！
+                    従来の検査では見つけられなかった超微小ながんの兆候を発見
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    <span className="font-bold">1ミリ以下のがん細胞を検出可能</span>
+                    <span className="font-bold">がんの一生を理解</span>
                     <br />
-                    従来の検査では見つけられなかった超微小ながんの兆候を発見！
+                    がんの発生から進行までの過程を詳細に把握
                   </p>
                 </div>
                 <div className="flex items-start">
                   <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <p className="text-gray-700">
-                    <span className="font-bold">健康状態を9段階で判定</span>
+                    <span className="font-bold">3つのマーカーによる高精度な判定</span>
                     <br />
-                    詳細なリスク評価により、個別の予防策の提案が可能！
+                    遺伝子、タンパク質、代謝物の複合的な分析で精度を向上
                   </p>
                 </div>
               </div>
@@ -54,7 +55,7 @@ export default function AboutPage() {
                   src="/placeholder.svg?height=500&width=500"
                   width={500}
                   height={500}
-                  alt="milli-c検査イメージ"
+                  alt="TMCA技術イメージ"
                   className="rounded-xl shadow-xl"
                 />
               </div>
@@ -63,186 +64,144 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 従来のがん検査との違い */}
+      {/* 社会背景 */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">従来のがん検査との違い</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">なぜこの検査をやるべきなのか</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-4">一般的な腫瘍マーカー検査</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <AlertCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">1cm以上の腫瘍が必要</p>
-                  </div>
-                  <div className="flex items-center">
-                    <AlertCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">既に症状が出ていることも</p>
-                  </div>
-                  <div className="flex items-center">
-                    <AlertCircle className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">治療中心のアプローチ</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div>
+              <h3 className="text-2xl font-bold mb-6">がんを取り巻く現状</h3>
+              <div className="space-y-6">
+                <div className="flex items-start">
+                  <AlertCircle className="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">がんによる死亡者数の増加</h4>
+                    <p className="text-gray-600">
+                      日本では2人に1人ががんになり、3人に1人ががんで亡くなる時代。
+                      早期発見の重要性が増しています。
+                    </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <h3 className="text-xl font-bold mb-4">PET検査</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <AlertCircle className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">5mm以上のがんを検出</p>
-                  </div>
-                  <div className="flex items-center">
-                    <AlertCircle className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">被ばくを伴う</p>
-                  </div>
-                  <div className="flex items-center">
-                    <AlertCircle className="w-5 h-5 text-orange-500 mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">初期のがん検出に限界あり</p>
+                <div className="flex items-start">
+                  <AlertCircle className="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">治療の負担</h4>
+                    <p className="text-gray-600">
+                      進行したがんの治療は、身体的・精神的・経済的な負担が大きい。
+                      早期発見による予防的アプローチが重要です。
+                    </p>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
-              <CardContent className="p-8 relative overflow-hidden">
-                <div className="absolute top-0 right-0 bg-primary text-white px-3 py-1 text-sm font-bold">milli-c</div>
-                <h3 className="text-xl font-bold mb-4">超早期がん検査</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">1mm以下のがん細胞も検出</p>
+                <div className="flex items-start">
+                  <AlertCircle className="w-6 h-6 text-red-500 mr-3 mt-1 flex-shrink-0" />
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">従来の検査の限界</h4>
+                    <p className="text-gray-600">
+                      一般的な検査では、がんが大きくなってからでないと検出できない。
+                      より早期の段階での発見が必要です。
+                    </p>
                   </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">血液と尿だけで検査可能</p>
-                  </div>
-                  <div className="flex items-center">
-                    <CheckCircle className="w-5 h-5 text-primary mr-3 flex-shrink-0" />
-                    <p className="text-gray-700">予防を重視したアプローチ</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="mt-16 bg-gray-50 p-8 rounded-xl">
-            <h3 className="text-2xl font-bold mb-6 text-center">milli-cならではの特長</h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="flex items-start">
-                <div className="mr-4 mt-1">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold">1</span>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold mb-2">簡単な検査方法</h4>
-                  <p className="text-gray-600">
-                    血液と尿の採取のみで完了。身体への負担が少なく、短時間で検査が可能です。
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="mr-4 mt-1">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold">2</span>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold mb-2">早期発見によるリスク管理</h4>
-                  <p className="text-gray-600">
-                    治療ではなく、予防に重点を置いたアプローチで、健康寿命の延伸を目指します。
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex items-start">
-                <div className="mr-4 mt-1">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                    <span className="text-primary font-bold">3</span>
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-lg font-bold mb-2">遺伝子解析と統計データ</h4>
-                  <p className="text-gray-600">
-                    最新の遺伝子解析技術と蓄積された統計データにより、高精度な予測が可能です。
-                  </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* カウンセリング */}
-      <section className="py-20 bg-primary/5">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="flex justify-center order-2 lg:order-1">
+            <div className="flex justify-center">
               <div className="relative w-full max-w-md">
                 <Image
                   src="/placeholder.svg?height=500&width=500"
                   width={500}
                   height={500}
-                  alt="カウンセリングイメージ"
+                  alt="がんの現状"
                   className="rounded-xl shadow-xl"
                 />
               </div>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-8">カウンセリング(有料相談)</h2>
-              <p className="text-xl text-gray-700 mb-6">
-                検査結果の解釈や健康管理のアドバイスを専門家から直接受けられます。
-              </p>
+      {/* TMCA詳細説明 */}
+      <section className="py-20 bg-primary/5">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">TMCAとは？</h2>
 
-              <div className="space-y-6 mb-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-xl shadow-lg p-8 mb-12">
+              <h3 className="text-2xl font-bold mb-6">がんの一生</h3>
+              <div className="space-y-8">
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
-                  <div>
-                    <h3 className="text-lg font-bold mb-1">結果の詳細な解説</h3>
-                    <p className="text-gray-600">検査結果の数値の意味や、リスク評価について詳しく説明いたします。</p>
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-primary font-bold">1</span>
                   </div>
-                </div>
-
-                <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="text-lg font-bold mb-1">個別の健康管理プラン</h3>
+                    <h4 className="text-lg font-bold mb-2">がんの発生</h4>
                     <p className="text-gray-600">
-                      あなたの生活習慣や家族歴を考慮した、オーダーメイドの健康管理プランをご提案します。
+                      正常な細胞が遺伝子変異を起こし、がん細胞へと変化。
+                      この段階ではまだ微小で、従来の検査では検出が困難です。
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-start">
-                  <CheckCircle className="w-6 h-6 text-primary mr-3 mt-1 flex-shrink-0" />
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-primary font-bold">2</span>
+                  </div>
                   <div>
-                    <h3 className="text-lg font-bold mb-1">医師・専門家による相談</h3>
+                    <h4 className="text-lg font-bold mb-2">微小ながんの成長</h4>
                     <p className="text-gray-600">
-                      対面またはオンラインで、専門知識を持った医師や健康管理の専門家に直接相談できます。
+                      がん細胞が増殖し、1ミリ以下の微小ながんへと成長。
+                      TMCA技術なら、この段階での検出が可能です。
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start">
+                  <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                    <span className="text-primary font-bold">3</span>
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-bold mb-2">がんの進行</h4>
+                    <p className="text-gray-600">
+                      がんが大きくなり、症状が現れ始める。
+                      この段階では一般的な検査でも検出可能になりますが、
+                      治療の負担が大きくなります。
                     </p>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <div className="p-6 bg-white rounded-lg shadow-md">
-                <div className="flex justify-between items-center mb-4">
-                  <h3 className="text-xl font-bold">カウンセリング料金</h3>
-                  <span className="text-2xl font-bold text-primary">¥10,000</span>
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold mb-6">TMCA検査の特徴</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-primary text-2xl font-bold">1</span>
+                  </div>
+                  <h4 className="text-lg font-bold mb-2">遺伝子マーカー</h4>
+                  <p className="text-gray-600">
+                    がん関連遺伝子の変異を検出。
+                    がんの発生リスクを早期に把握します。
+                  </p>
                 </div>
-                <p className="text-gray-600 mb-6">
-                  1回60分の個別カウンセリングで、検査結果の解釈から生活習慣のアドバイスまで幅広くサポートします。
-                </p>
-                <Button size="lg" className="w-full">
-                  カウンセリングを予約する
-                </Button>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-primary text-2xl font-bold">2</span>
+                  </div>
+                  <h4 className="text-lg font-bold mb-2">タンパク質マーカー</h4>
+                  <p className="text-gray-600">
+                    がん細胞が産生する特異的なタンパク質を検出。
+                    がんの存在を高精度で判定します。
+                  </p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-primary text-2xl font-bold">3</span>
+                  </div>
+                  <h4 className="text-lg font-bold mb-2">代謝物マーカー</h4>
+                  <p className="text-gray-600">
+                    がん細胞の代謝産物を検出。
+                    がんの進行状態を詳細に評価します。
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -252,14 +211,15 @@ export default function AboutPage() {
       {/* CTA */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">milli-cで健康な未来を手に入れましょう</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">TMCA技術で、がんの超早期発見を</h2>
           <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
-            がんを「治療する病気」から「予防できる状態」へ。
-            milli-cの超早期検査で、あなたの健康をコントロールしましょう。
+            1ミリ以下のがん細胞を検出できるTMCA技術で、
+            あなたの健康を守りましょう。
           </p>
           <Link href="/process">
-            <Button size="lg" className="px-8">
+            <Button size="lg" className="bg-primary text-white hover:bg-primary/90 font-bold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
               検査の流れを知る
+              <ArrowRight className="ml-2 w-5 h-5" />
             </Button>
           </Link>
         </div>
