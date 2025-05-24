@@ -5,58 +5,71 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
   return (
-    <header className="bg-white shadow-sm sticky top-0 z-50">
+    <header className="bg-white shadow-sm">
       <div className="container mx-auto px-4">
+        {/* PC表示時のロゴ */}
+        <div className="hidden md:flex justify-center py-6 w-[250px] mx-auto">
+          <Link href="/" className="flex items-center w-[250px]">
+            <Image
+              src="/images/mainlogo_millic.png"
+              alt="milli-c Logo"
+              width={250}
+              height={100}
+              priority
+              className="w-[250px] h-auto"
+            />
+          </Link>
+        </div>
+
         <div className="flex items-center justify-between h-16">
-          <div className="flex-shrink-0">
+          {/* モバイル表示時のロゴ */}
+          <div className="md:hidden flex-shrink-0">
             <Link href="/" className="flex items-center">
               <Image
                 src="/images/mainlogo_millic.png"
                 alt="milli-c Logo"
-                width={200}
-                height={50}
-                priority
-                className="h-12 w-auto"
+                width={150}
+                height={40}
+                className="h-10 w-auto"
               />
             </Link>
           </div>
 
-          <div className="hidden md:block">
-            <nav className="ml-10 flex items-center space-x-8">
-              <Link href="/about" className="text-gray-700 hover:text-primary font-medium">
-                milli-cとは？
-              </Link>
-              <Link href="/service" className="text-gray-700 hover:text-primary font-medium">
-                サービス内容
-              </Link>
-              <Link href="/flow" className="text-gray-700 hover:text-primary font-medium">
-                検査の流れ
-              </Link>
-              <Link href="/faq" className="text-gray-700 hover:text-primary font-medium">
-                よくある質問
-              </Link>
-              <Link href="/special" className="text-gray-700 hover:text-primary font-medium">
-                特設ページ
-              </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-primary font-medium">
-                お問い合わせ
-              </Link>
-              <Link href="/for-clinics" className="text-white hover:text-white/90 font-medium fixed right-0 top-1/2 -translate-y-1/2 bg-primary px-4 py-6 rounded-l-md shadow-sm [writing-mode:vertical-rl]">
-                医療関係の皆様へ
+          <div className="hidden md:block w-full">
+            <nav className="flex items-center justify-center w-full gap-12 h-16">
+              <div className="flex flex-1 items-center justify-center gap-12">
+                {[
+                  { href: '/about', label: 'milli-cとは？' },
+                  { href: '/service', label: 'サービス内容' },
+                  { href: '/flow', label: '検査の流れ' },
+                  { href: '/faq', label: 'よくある質問' },
+                  { href: '/special', label: '特設ページ' },
+                  { href: '/contact', label: 'お問い合わせ' },
+                ].map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className={`text-gray-500 font-normal px-4 py-2 rounded-lg transition-colors duration-200 hover:bg-primary/10 hover:text-primary ${pathname === item.href ? 'text-primary font-semibold bg-primary/10' : ''}`}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
+              <Link href="/reserve" className="ml-auto px-12 py-3 bg-primary text-white font-bold rounded-lg transition-colors duration-200 hover:bg-primary/80" style={{ minWidth: '160px', textAlign: 'center' }}>
+                検査・診療予約
               </Link>
             </nav>
-          </div>
-          <div className="hidden md:block">
-            <Button className="ml-4 bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
           </div>
 
           <div className="md:hidden">

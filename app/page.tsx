@@ -1,3 +1,4 @@
+'use client';
 import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
@@ -14,34 +15,46 @@ import {
   Users,
   ChevronRight,
 } from "lucide-react"
+import { useRef, useEffect } from "react"
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 0.5;
+    }
+  }, []);
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
       <section className="relative w-full h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/placeholder.svg?height=600&width=1920"
-            alt="DNA analysis with smiling people"
-            fill
-            className="object-cover opacity-80"
-            priority
+          <video
+            ref={videoRef}
+            src="/sparkring.mp4"
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 to-primary/40"></div>
         </div>
 
         <div className="relative z-10 container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-            ステージに上がらない。milli-c で見つける未来の安心
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            ステージに上がらない。<br />
+            milli-c で見つける未来の安心
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto">
-            がん細胞1ミリ以下でも検出可能。超早期発見・予防であなたの健康を守る
+          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)]">
+            がん細胞1ミリ以下でも検出可能。<br />
+            超早期発見・予防であなたの健康を守る
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/reserve">
-              <Button size="lg" className="bg-white text-primary hover:bg-white/90 font-bold text-lg">
-                検査予約へ
+              <Button size="lg" className="bg-primary text-white text-xl font-bold px-10 py-5 rounded-xl border-2 border-white shadow-lg hover:bg-primary/80 hover:brightness-110 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200">
+                検査・診療予約へ
               </Button>
             </Link>
           </div>
@@ -80,8 +93,8 @@ export default function Home() {
             <div className="order-1 lg:order-2">
               <div className="relative aspect-square max-w-md mx-auto">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
-                  alt="TMCA技術のイメージ"
+                  src="/image_1mmcancer.webp"
+                  alt="1ミリ以下のがん細胞イメージ"
                   fill
                   className="object-cover rounded-xl shadow-xl"
                 />
@@ -133,68 +146,38 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">検査の流れ</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-12 md:gap-8 relative">
-            {/* Connect lines between steps */}
-            <div className="hidden lg:block absolute top-24 left-[25%] right-[25%] h-0.5 bg-primary/30"></div>
-
-            <div className="flex flex-col items-center text-center relative">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 z-10">
-                <Calendar className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute top-8 -right-4 lg:block hidden">
-                <div className="w-8 h-8 rounded-full bg-white border border-primary flex items-center justify-center text-sm font-bold text-primary">
-                  1
+          <div className="flex flex-col md:flex-row justify-center items-start md:items-stretch gap-8 max-w-6xl mx-auto">
+            {[
+              {
+                icon: <Calendar className="w-12 h-12 text-white" />, label: "予約", desc: "WEBまたは電話から簡単予約。希望の日時と提携クリニックを選択できます。"
+              },
+              {
+                icon: <Users className="w-12 h-12 text-white" />, label: "来院・検査", desc: "問診後、血液と尿の採取を行います。所要時間約30分の簡単な検査です。"
+              },
+              {
+                icon: <TestTube className="w-12 h-12 text-white" />, label: "解析", desc: "最新の技術で検体を詳細に分析。遺伝子レベルでの検査を実施します。"
+              },
+              {
+                icon: <FileCheck className="w-12 h-12 text-white" />, label: "結果通知", desc: "最短6日で結果をお届け。オプションでカウンセリングも受けられます。"
+              },
+            ].map((step, idx) => (
+              <div key={idx} className="flex-1 flex flex-col items-center text-center relative px-2">
+                <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-4">
+                  {step.icon}
                 </div>
+                <div className="w-8 h-8 rounded-full border-2 border-primary text-primary flex items-center justify-center font-bold mb-2">{idx+1}</div>
+                <h3 className="text-xl font-bold mb-3">{step.label}</h3>
+                <div className="w-full border-b border-blue-100 mb-3" />
+                <p className="text-gray-600 mb-2 min-h-[48px]">{step.desc}</p>
               </div>
-              <h3 className="text-xl font-bold mb-3">予約</h3>
-              <p className="text-gray-600">WEBまたは電話から簡単予約。希望の日時と提携クリニックを選択できます。</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center relative">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 z-10">
-                <Users className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute top-8 -right-4 lg:block hidden">
-                <div className="w-8 h-8 rounded-full bg-white border border-primary flex items-center justify-center text-sm font-bold text-primary">
-                  2
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-3">来院・検査</h3>
-              <p className="text-gray-600">問診後、血液と尿の採取を行います。所要時間約30分の簡単な検査です。</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center relative">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 z-10">
-                <TestTube className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute top-8 -right-4 lg:block hidden">
-                <div className="w-8 h-8 rounded-full bg-white border border-primary flex items-center justify-center text-sm font-bold text-primary">
-                  3
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-3">解析</h3>
-              <p className="text-gray-600">最新の技術で検体を詳細に分析。遺伝子レベルでの検査を実施します。</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center relative">
-              <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-6 z-10">
-                <FileCheck className="w-8 h-8 text-white" />
-              </div>
-              <div className="absolute top-8 -right-4 lg:block hidden">
-                <div className="w-8 h-8 rounded-full bg-white border border-primary flex items-center justify-center text-sm font-bold text-primary">
-                  4
-                </div>
-              </div>
-              <h3 className="text-xl font-bold mb-3">結果通知</h3>
-              <p className="text-gray-600">最短6日で結果をお届け。オプションでカウンセリングも受けられます。</p>
-            </div>
+            ))}
           </div>
 
-          <div className="text-center mt-16">
+          <div className="text-center mt-12">
             <Link href="/flow">
-                <Button size="lg" className="bg-primary text-white hover:bg-primary/90 font-bold text-lg px-8 py-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-                  詳しく見る
-                </Button>
+              <Button size="lg" className="bg-primary text-white font-bold text-lg px-8 py-4 shadow-lg hover:bg-primary/90 transition-all duration-300">
+                詳しく見る
+              </Button>
             </Link>
           </div>
         </div>
@@ -240,7 +223,7 @@ export default function Home() {
             <div className="order-1 lg:order-2 flex justify-center">
               <div className="relative w-full max-w-md">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
+                  src="image_stage.webp"
                   width={500}
                   height={500}
                   alt="9段階のがんリスク判定イメージ"

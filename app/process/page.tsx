@@ -2,6 +2,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { CheckCircle, Calendar, Users, TestTube, FileCheck, ArrowRight } from "lucide-react"
+import Link from "next/link"
 
 export const metadata = {
   title: "検査の流れ | milli-c",
@@ -55,7 +56,7 @@ export default function ProcessPage() {
                         <div className="flex items-start mt-2">
                           <CheckCircle className="w-5 h-5 text-primary mr-3 mt-1 flex-shrink-0" />
                           <p className="text-gray-700">
-                            <span className="font-medium">電話予約：</span>03-1234-5678（平日9:00〜18:00）
+                            <span className="font-medium">電話予約：</span>03-6910-8677（平日10:00〜18:00）
                           </p>
                         </div>
                       </div>
@@ -224,21 +225,6 @@ export default function ProcessPage() {
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-2">オンラインポータルでの確認</h3>
-                    <p className="text-gray-600">
-                      セキュアなオンラインポータルサイトで、いつでもどこでも検査結果を確認できます。
-                      過去の検査結果との比較や、健康状態の変化も追跡可能です。
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start">
-                  <div className="mr-4 mt-1">
-                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                      <span className="text-primary font-bold">3</span>
-                    </div>
-                  </div>
-                  <div>
                     <h3 className="text-xl font-bold mb-2">クリニックでの直接説明</h3>
                     <p className="text-gray-600">
                       提携クリニックにて、医師から直接結果の説明を受けることも可能です。
@@ -252,7 +238,7 @@ export default function ProcessPage() {
             <div className="order-1 lg:order-2 flex justify-center">
               <div className="relative w-full max-w-md">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
+                  src="/image_mail.webp"
                   width={500}
                   height={500}
                   alt="検査結果レポートイメージ"
@@ -299,13 +285,15 @@ export default function ProcessPage() {
                       </div>
                     </div>
 
-                    <Button>カウンセリングを予約する</Button>
+                    <Link href="/reserve">
+                      <Button>カウンセリングを予約する</Button>
+                    </Link>
                   </div>
 
                   <div className="flex justify-center">
                     <div className="relative w-full max-w-md">
                       <Image
-                        src="/placeholder.svg?height=400&width=400"
+                        src="/image_counseling.webp"
                         width={400}
                         height={400}
                         alt="カウンセリングイメージ"
@@ -328,9 +316,11 @@ export default function ProcessPage() {
             milli-cの超早期がん検査で、がんを治療する前に予防する未来へ。
             シンプルな検査で、あなたの健康に大きな安心をもたらします。
           </p>
-          <Button size="lg" className="bg-white text-primary hover:bg-white/90">
-            検査を予約する <ArrowRight className="ml-2 w-4 h-4" />
-          </Button>
+          <Link href="/reserve">
+            <Button size="lg" className="bg-white text-primary hover:bg-white/90">
+              検査を予約する <ArrowRight className="ml-2 w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </section>
     </div>

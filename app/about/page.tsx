@@ -17,10 +17,10 @@ export default function AboutPage() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">m-cで分かること</h1>
+              <h1 className="text-4xl md:text-5xl font-bold mb-6">milli-cで分かること</h1>
               <p className="text-xl text-gray-700 mb-8">
                 がんは「治療する病気」から「予防できる状態」へ。
-                TMCA技術による超早期発見で、あなたの健康をコントロールしましょう。
+                milli-c（ミリシー）はTMCA技術による超早期発見で、あなたの健康をコントロールします。
               </p>
               <div className="space-y-4">
                 <div className="flex items-start">
@@ -52,10 +52,10 @@ export default function AboutPage() {
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
+                  src="/image_1mmcancer.webp"
                   width={500}
                   height={500}
-                  alt="TMCA技術イメージ"
+                  alt="1ミリ以下のがん細胞イメージ"
                   className="rounded-xl shadow-xl"
                 />
               </div>
@@ -108,10 +108,10 @@ export default function AboutPage() {
             <div className="flex justify-center">
               <div className="relative w-full max-w-md">
                 <Image
-                  src="/placeholder.svg?height=500&width=500"
+                  src="/image_inspection.webp"
                   width={500}
                   height={500}
-                  alt="がんの現状"
+                  alt="検査の必要性イメージ"
                   className="rounded-xl shadow-xl"
                 />
               </div>

@@ -13,7 +13,7 @@ export default function ServicePage() {
       {/* 価格プラン */}
       <section className="mb-16">
         <h2 className="text-3xl font-semibold mb-8 text-center">料金プラン</h2>
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           <Card>
             <CardHeader>
               <CardTitle>基本プラン</CardTitle>
@@ -41,6 +41,21 @@ export default function ServicePage() {
                 <li>• 追加検査項目</li>
                 <li>• 詳細な分析レポート</li>
                 <li>• 専門家による解説</li>
+              </ul>
+              <Button className="w-full">お問い合わせ</Button>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader>
+              <CardTitle>カウンセリング</CardTitle>
+              <CardDescription>専門家による個別カウンセリング</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <p className="text-3xl font-bold mb-4">¥10,000</p>
+              <ul className="space-y-2 mb-6">
+                <li>• 検査結果の解説</li>
+                <li>• 健康管理のアドバイス</li>
+                <li>• 生活習慣の相談</li>
               </ul>
               <Button className="w-full">お問い合わせ</Button>
             </CardContent>
