@@ -54,7 +54,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/reserve">
               <Button size="lg" className="bg-primary text-white text-xl font-bold px-10 py-5 rounded-xl border-2 border-white shadow-lg hover:bg-primary/80 hover:brightness-110 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200">
-                検査・診療予約へ
+                検査・カウンセリング予約へ
               </Button>
             </Link>
           </div>

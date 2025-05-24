@@ -67,7 +67,7 @@ export default function Header() {
                 ))}
               </div>
               <Link href="/reserve" className="ml-auto px-12 py-3 bg-primary text-white font-bold rounded-lg transition-colors duration-200 hover:bg-primary/80" style={{ minWidth: '160px', textAlign: 'center' }}>
-                検査・診療予約
+                検査・カウンセリング予約
               </Link>
             </nav>
           </div>
@@ -146,7 +146,7 @@ export default function Header() {
             </Link>
             <Link href="/reserve">
               <div className="mt-3 px-3">
-                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・診療予約</Button>
+                <Button className="w-full bg-primary hover:bg-primary/90 text-white font-bold shadow-lg">検査・カウンセリング予約</Button>
               </div>
             </Link>
           </div>
