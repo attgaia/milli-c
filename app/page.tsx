@@ -235,36 +235,43 @@ export default function Home() {
       </section>
 
       {/* milli-Cの3つの特徴 */}
-      <section ref={featuresFade.ref} className={`py-20 bg-gray-50 border-t border-b border-gray-200 fade-in-section${featuresFade.isMounted && featuresFade.isVisible ? ' is-visible' : ''}`}>
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-[#708fa6]">milli-Cの３つの特徴</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <section ref={featuresFade.ref} className={`relative py-20 bg-gray-50 border-t border-b border-gray-200 fade-in-section${featuresFade.isMounted && featuresFade.isVisible ? ' is-visible' : ''}`}> 
+        <div className="features-section container mx-auto px-4 max-w-7xl relative overflow-hidden">
+          <h2 className="section-title text-3xl md:text-4xl font-bold text-center mb-20 text-[#708fa6] relative">
+            milli-Cの３つの特徴
+            <span className="block absolute left-1/2 -translate-x-1/2 bottom-[-20px] w-20 h-1 bg-gradient-to-r from-transparent via-[#708fa6] to-transparent rounded-full"></span>
+          </h2>
+          <div className="features-grid grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 mb-12 relative z-10">
             {/* 1つ目 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-56 h-56 flex items-center justify-center rounded-full border border-gray-300 mb-6">
-                <span className="text-xl md:text-2xl font-bold text-gray-700 leading-tight">血液と採尿だけで<br />全身のがんを検知</span>
+            <div className="feature-card text-center p-10 bg-white rounded-2xl relative transition-all duration-300 overflow-hidden shadow-sm animate-fadeInUp" style={{ animationDelay: '0.1s' }}>
+              <div className="feature-icon w-28 h-28 mx-auto mb-8 bg-[#f0f7fa] rounded-full flex items-center justify-center relative transition-all duration-300">
+                <span className="feature-icon-content text-5xl">🩸</span>
               </div>
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+              <h3 className="feature-title text-xl font-bold mb-4 text-gray-800 leading-snug">血液と採尿だけで<br />全身のがんを検知</h3>
+              <div className="feature-description text-gray-600 text-left text-base leading-relaxed p-5 bg-[#fafbfc] border border-[#eef2f5] rounded-xl">
                 国際がん予知予防センターでは血液と尿から、今までの特異的腫瘍マーカーだけでは検出されなかった幼若レベルの細胞のミクロがんを発見します。したがって新生血管が形成され、がんがわずかに増殖を始めるミクロがんの検出が可能です。
-              </p>
+              </div>
             </div>
             {/* 2つ目 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-56 h-56 flex items-center justify-center rounded-full border border-gray-300 mb-6">
-                <span className="text-xl md:text-2xl font-bold text-gray-700 leading-tight">世界が認めた<br />優れた初期ガン判定率87.5%</span>
+            <div className="feature-card text-center p-10 bg-white rounded-2xl relative transition-all duration-300 overflow-hidden shadow-sm animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+              <div className="feature-icon w-28 h-28 mx-auto mb-8 bg-[#f0f7fa] rounded-full flex items-center justify-center relative transition-all duration-300">
+                <span className="feature-icon-content text-5xl">🌐</span>
               </div>
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed">
-                この検査法は米国第40代大統領夫人ナンシー・レーガン夫人の仲介により、開発者小林常雄医学博士（現国際がん予知予防センター長）と米国国立がん研究所（NCI）とメイヨークリニックとの臨床試験（ダブルブラインドテスト）により87.5%以上の確率でがんを超早期発見しました。
-              </p>
+              <h3 className="feature-title text-xl font-bold mb-2 text-gray-800 leading-snug">世界が認めた<br />優れた初期ガン判定</h3>
+              <p className="feature-subtitle text-[#708fa6] font-semibold text-lg mb-3">率87.5%</p>
+              <div className="feature-description text-gray-600 text-left text-base leading-relaxed p-5 bg-[#fafbfc] border border-[#eef2f5] rounded-xl">
+                この検査法は米国第40代大統領夫人ナンシー・レーガン夫人の仲介により、開発者小林常雄医学博士（現国際がん予知予防センター長）と米国国立がん研究所（NCI）とメイヨークリニックとの臨床試験（ダブルブラインドテスト）により<span className="highlight-number text-[#708fa6] font-bold">87.5%以上</span>の確率でがんを超早期発見しました。
+              </div>
             </div>
             {/* 3つ目 */}
-            <div className="flex flex-col items-center text-center">
-              <div className="w-56 h-56 flex items-center justify-center rounded-full border border-gray-300 mb-6">
-                <span className="text-xl md:text-2xl font-bold text-gray-700 leading-tight">世界のがん専門誌<br />"cancer"でも紹介</span>
+            <div className="feature-card text-center p-10 bg-white rounded-2xl relative transition-all duration-300 overflow-hidden shadow-sm animate-fadeInUp" style={{ animationDelay: '0.3s' }}>
+              <div className="feature-icon w-28 h-28 mx-auto mb-8 bg-[#f0f7fa] rounded-full flex items-center justify-center relative transition-all duration-300">
+                <span className="feature-icon-content text-5xl">📚</span>
               </div>
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed break-words">
-                1994年の時点ですでに世界的に権威のあるがん専門誌"cancer"（vol.73,1994）にTMCA-Dの臨床データ（2,126人の5～7年の罹患率）がこの分野で世界で初めての報告でした。現在小林式個別化がん予知予防解析は定説として世界中に確立しつつあります。
-              </p>
+              <h3 className="feature-title text-xl font-bold mb-4 text-gray-800 leading-snug">世界のがん専門誌<br />"cancer"でも紹介</h3>
+              <div className="feature-description text-gray-600 text-left text-base leading-relaxed p-5 bg-[#fafbfc] border border-[#eef2f5] rounded-xl">
+                1994年の時点ですでに世界的に権威のあるがん専門誌<span className="citation inline-block px-2 bg-[#e8f2f7] text-[#708fa6] rounded font-semibold text-sm mx-1">"cancer" (vol.73,1994)</span>にTMCA-Dの臨床データ（2,126人の5～7年の罹患率）がこの分野で世界で初めての報告でした。現在小林式個別化がん予知予防解析は定説として世界中に確立しつつあります。
+              </div>
             </div>
           </div>
         </div>
