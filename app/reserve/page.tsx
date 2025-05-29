@@ -8,9 +8,9 @@ import { Card } from "@/components/ui/card";
 import { toast } from "sonner";
 
 const clinics = [
-  "クリニックA",
-  "クリニックB",
-  "クリニックC",
+  "ホリスティッククリニック東京",
+  "美浜ホームクリニック",
+  "ふじみ野内科クリニック",
 ];
 
 export default function ReservePage() {
@@ -19,7 +19,7 @@ export default function ReservePage() {
   const [email, setEmail] = useState("");
   const [emailConfirm, setEmailConfirm] = useState("");
   const [phone, setPhone] = useState("");
-  const [type, setType] = useState("検査");
+  const [type, setType] = useState("診察");
   const [clinic, setClinic] = useState("");
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [loading, setLoading] = useState(false);
@@ -55,7 +55,10 @@ export default function ReservePage() {
 
   return (
     <div className="container mx-auto py-8">
-      <h1 className="text-2xl font-bold mb-6">予約フォーム</h1>
+      <div className="flex justify-center mb-8">
+        <img src="/mainlogo_millic.png" alt="milli-c ロゴ" width={200} height={60} style={{ width: '200px', height: 'auto' }} />
+      </div>
+      <h1 className="text-3xl font-bold text-center mb-12">検査・カウンセリング予約フォーム</h1>
       <Card className="p-6 max-w-xl mx-auto">
         <div className="mb-4">
           <label className="block mb-1 font-semibold">お名前 <span className="text-red-500">※必須</span></label>
@@ -74,10 +77,10 @@ export default function ReservePage() {
           <input type="tel" className="w-full border rounded px-3 py-2" value={phone} onChange={e => setPhone(e.target.value)} />
         </div>
         <div className="mb-4">
-          <label className="block mb-1 font-semibold">検査 or 診察</label>
+          <label className="block mb-1 font-semibold">診察 or カウンセリング</label>
           <select className="w-full border rounded px-3 py-2" value={type} onChange={e => setType(e.target.value)}>
-            <option value="検査">検査</option>
             <option value="診察">診察</option>
+            <option value="カウンセリング">カウンセリング</option>
           </select>
         </div>
         <div className="mb-4">
@@ -97,6 +100,13 @@ export default function ReservePage() {
           {loading ? "送信中..." : "予約する"}
         </Button>
       </Card>
+      <div className="flex justify-center mt-12">
+        <a href="/" className="inline-block">
+          <Button size="lg" className="bg-gray-600 text-white text-lg font-bold px-8 py-4 rounded-xl shadow hover:bg-gray-800 transition-all duration-200">
+            トップページへ戻る
+          </Button>
+        </a>
+      </div>
     </div>
   );
 }

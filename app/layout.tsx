@@ -3,10 +3,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { AuthProvider } from '@/components/AuthProvider';
-import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'クリニック予約',
@@ -20,10 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body className={inter.className}>
+      <body className={inter.className} suppressHydrationWarning={true}>
         <AuthProvider>
           <div className="min-h-screen flex flex-col">
-            <Header />
             <main className="flex-1">
               {children}
             </main>
