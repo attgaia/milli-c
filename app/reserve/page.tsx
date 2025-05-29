@@ -77,9 +77,9 @@ export default function ReservePage() {
           <input type="tel" className="w-full border rounded px-3 py-2" value={phone} onChange={e => setPhone(e.target.value)} />
         </div>
         <div className="mb-4">
-          <label className="block mb-1 font-semibold">診察 or カウンセリング</label>
+          <label className="block mb-1 font-semibold">検査 or カウンセリング</label>
           <select className="w-full border rounded px-3 py-2" value={type} onChange={e => setType(e.target.value)}>
-            <option value="診察">診察</option>
+            <option value="検査">検査</option>
             <option value="カウンセリング">カウンセリング</option>
           </select>
         </div>

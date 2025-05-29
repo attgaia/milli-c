@@ -34,10 +34,59 @@ export default function Home() {
   const clinicsFade = useFadeInSection<HTMLElement>();
   const contactFade = useFadeInSection<HTMLElement>();
 
+  const planFadeLeft = useFadeInSection<HTMLDivElement>();
+  const planFadeCenter = useFadeInSection<HTMLDivElement>();
+  const planFadeRight = useFadeInSection<HTMLDivElement>();
+
+  // 料金プランカードの順次出現用
+  const [centerVisible, setCenterVisible] = useState(false);
+  const [leftVisible, setLeftVisible] = useState(false);
+  const [rightVisible, setRightVisible] = useState(false);
+  const centerRef = useRef<HTMLDivElement>(null);
+
+  // 検査の流れステップ用
+  const [flowVisible, setFlowVisible] = useState([false, false, false, false]);
+  const flowRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.playbackRate = 0.5;
     }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !centerRef.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCenterVisible(true);
+          setTimeout(() => setLeftVisible(true), 200);
+          setTimeout(() => setRightVisible(true), 400);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(centerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !flowRef.current) return;
+    const observer = new window.IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setFlowVisible([true, false, false, false]);
+          setTimeout(() => setFlowVisible([true, true, false, false]), 450);
+          setTimeout(() => setFlowVisible([true, true, true, false]), 900);
+          setTimeout(() => setFlowVisible([true, true, true, true]), 1350);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(flowRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -50,7 +99,7 @@ export default function Home() {
             alt="milli-c ヒーロー画像"
             width={1600}
             height={600}
-            className="w-full h-auto object-cover mb-12"
+            className="w-full h-auto object-contain"
             priority
           />
         </div>
@@ -58,7 +107,7 @@ export default function Home() {
       {/* milli-cとは？ */}
       <section ref={aboutFade.ref} id="about" className={`py-20 bg-white fade-in-section${aboutFade.isMounted && aboutFade.isVisible ? ' is-visible' : ''}`}>
         <div className="container mx-auto px-4 max-w-7xl">
-          <h2 className="text-3xl font-bold text-center mb-12">milli-Cでわかること</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#708fa6]">milli-Cでわかること</h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="order-2 lg:order-1">
@@ -89,7 +138,7 @@ export default function Home() {
           {/* がんの真実 */}
           <section id="truth" className="py-20">
             <div className="bg-white border border-gray-200 rounded-2xl shadow-lg p-6 container mx-auto max-w-7xl px-4 md:px-8">
-              <h2 className="text-4xl font-bold text-center mb-16">がんの真実</h2>
+              <h2 className="text-4xl font-bold text-center mb-16 text-[#708fa6]">がんの真実</h2>
               <div className="flex justify-center mb-12">
                 <div className="w-full max-w-5xl h-[400px] md:h-[480px] bg-gray-200 rounded-xl flex items-center justify-center border border-gray-300">
                   {/* ダミー画像 */}
@@ -111,7 +160,7 @@ export default function Home() {
           <div className="bg-primary/5 rounded-2xl p-8 mb-16 max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div>
-                <h3 className="text-2xl font-bold mb-6">腫瘍マーカー総合解析法（TMCA-D）とは？</h3>
+                <h3 className="text-2xl font-bold mb-6 text-[#708fa6]">腫瘍マーカー総合解析法（TMCA-D）とは？</h3>
                 <div className="text-gray-700 text-base leading-relaxed space-y-4">
                   <p>
                     がん組織は、がん細胞に間質と⾎管を伴い形成します。がん組織の直径が2〜4mmほどになると⾎管が形成され、その後本格的な増殖が始まります。そしてがん細胞、がん間質、がん⾎管は、それぞれ組織の成⻑に伴って腫瘍マーカーを分泌します。
@@ -188,7 +237,7 @@ export default function Home() {
       {/* milli-Cの3つの特徴 */}
       <section ref={featuresFade.ref} className={`py-20 bg-gray-50 border-t border-b border-gray-200 fade-in-section${featuresFade.isMounted && featuresFade.isVisible ? ' is-visible' : ''}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">milli-Cの３つの特徴</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-[#708fa6]">milli-Cの３つの特徴</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
             {/* 1つ目 */}
             <div className="flex flex-col items-center text-center">
@@ -213,7 +262,7 @@ export default function Home() {
               <div className="w-56 h-56 flex items-center justify-center rounded-full border border-gray-300 mb-6">
                 <span className="text-xl md:text-2xl font-bold text-gray-700 leading-tight">世界のがん専門誌<br />"cancer"でも紹介</span>
               </div>
-              <p className="text-gray-500 text-base md:text-lg leading-relaxed">
+              <p className="text-gray-500 text-base md:text-lg leading-relaxed break-words">
                 1994年の時点ですでに世界的に権威のあるがん専門誌"cancer"（vol.73,1994）にTMCA-Dの臨床データ（2,126人の5～7年の罹患率）がこの分野で世界で初めての報告でした。現在小林式個別化がん予知予防解析は定説として世界中に確立しつつあります。
               </p>
             </div>
@@ -224,56 +273,79 @@ export default function Home() {
       {/* サービス内容・料金プラン */}
       <section ref={serviceFade.ref} className={`py-20 bg-white fade-in-section${serviceFade.isMounted && serviceFade.isVisible ? ' is-visible' : ''}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">サービス内容</h2>
-          <h3 className="text-3xl font-semibold mb-8 text-center">料金プラン</h3>
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <Card>
-              <CardHeader className="p-8">
-                <CardTitle className="text-2xl">基本プラン</CardTitle>
-                <CardDescription className="text-lg">標準的な検査項目を含むプラン</CardDescription>
-              </CardHeader>
-              <CardContent className="p-8 pt-0">
-                <p className="text-3xl font-bold mb-4">¥145,000</p>
-                <ul className="space-y-2 mb-6 text-xl">
-                  <li>• 基本検査項目</li>
-                  <li>• 標準的な分析</li>
-                  <li>• 基本的なレポート</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="p-8">
-                <CardTitle className="text-2xl">プレミアムプラン</CardTitle>
-                <CardDescription className="text-lg">詳細な分析と追加サービス</CardDescription>
-              </CardHeader>
-              <CardContent className="p-8 pt-0">
-                <p className="text-3xl font-bold mb-4">¥245,000</p>
-                <ul className="space-y-2 mb-6 text-xl">
-                  <li>• 基本プランの全項目</li>
-                  <li>• 追加検査項目</li>
-                  <li>• 詳細な分析レポート</li>
-                  <li>• 専門家による解説</li>
-                </ul>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="p-8">
-                <CardTitle className="text-2xl">カウンセリング</CardTitle>
-                <CardDescription className="text-lg">専門家による個別カウンセリング</CardDescription>
-              </CardHeader>
-              <CardContent className="p-8 pt-0">
-                <p className="text-3xl font-bold mb-4">¥10,000</p>
-                <ul className="space-y-2 mb-6 text-xl">
-                  <li>• 検査結果の解説</li>
-                  <li>• 健康管理のアドバイス</li>
-                  <li>• 生活習慣の相談</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <h2 className="text-4xl font-bold text-center mb-12 text-[#708fa6] tracking-tight">サービス内容</h2>
+          <h3 className="text-2xl md:text-3xl font-semibold mb-12 text-center text-[#708fa6] font-normal">料金プラン</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 pricing-cards">
+            {/* 基本プラン（左） */}
+            <div
+              className={`card basic bg-white border border-gray-200 rounded-2xl p-10 relative overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl hover:border-[#708fa6] fade-in-section${leftVisible ? ' is-visible' : ''}`}
+              style={{ animationDelay: '0.2s' }}
+            >
+              <div className="card-header mb-8 text-center">
+                <h3 className="plan-name text-2xl font-bold mb-2 text-gray-800">基本プラン</h3>
+                <p className="plan-description text-base text-gray-500">標準的な検査項目を含むプラン</p>
+              </div>
+              <div className="price text-4xl font-extrabold my-8 text-[#708fa6] text-center relative">¥145,000
+                <span className="block w-16 h-1 bg-gradient-to-r from-transparent via-[#708fa6] to-transparent mx-auto mt-2 rounded-full"></span>
+              </div>
+              <ul className="features list-none my-10 space-y-3">
+                <li className="relative pl-8 text-gray-700">基本検査項目</li>
+                <li className="relative pl-8 text-gray-700">標準的な分析</li>
+                <li className="relative pl-8 text-gray-700">基本的なレポート</li>
+              </ul>
+              <Link href="/reserve" className="block mt-auto">
+                <button className="cta-button w-full py-4 px-6 rounded-lg border-2 border-[#708fa6] text-[#708fa6] font-bold text-base bg-white transition-all duration-300 hover:bg-[#708fa6] hover:text-white">このプランを選択</button>
+              </Link>
+            </div>
+            {/* プレミアムプラン（中央） */}
+            <div
+              ref={centerRef}
+              className={`card premium bg-gradient-to-br from-white to-[#f8fbfd] border-2 border-[#708fa6] rounded-2xl p-10 relative overflow-hidden shadow-md transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl fade-in-section${centerVisible ? ' is-visible' : ''}`}
+              style={{ animationDelay: '0.1s' }}
+            >
+              <span className="absolute top-6 right-[-40px] bg-[#708fa6] text-white py-1 px-12 text-xs font-bold rotate-45 shadow-md z-10">おすすめ</span>
+              <div className="card-header mb-8 text-center">
+                <h3 className="plan-name text-2xl font-bold mb-2 text-gray-800">プレミアムプラン</h3>
+                <p className="plan-description text-base text-gray-500">詳細な分析と追加サービス</p>
+              </div>
+              <div className="price text-4xl font-extrabold my-8 text-[#708fa6] text-center relative">¥245,000
+                <span className="block w-16 h-1 bg-gradient-to-r from-transparent via-[#708fa6] to-transparent mx-auto mt-2 rounded-full"></span>
+              </div>
+              <ul className="features list-none my-10 space-y-3">
+                <li className="relative pl-8 text-gray-700">基本プランの全項目</li>
+                <li className="relative pl-8 text-gray-700">追加検査項目</li>
+                <li className="relative pl-8 text-gray-700">詳細な分析レポート</li>
+                <li className="relative pl-8 text-gray-700">専門家による解説</li>
+              </ul>
+              <Link href="/reserve" className="block mt-auto">
+                <button className="cta-button w-full py-4 px-6 rounded-lg font-bold text-base bg-gradient-to-r from-[#708fa6] to-[#5c7a91] text-white transition-all duration-300 hover:brightness-110">このプランを選択</button>
+              </Link>
+            </div>
+            {/* カウンセリング（右） */}
+            <div
+              className={`card counseling bg-white border border-gray-200 rounded-2xl p-10 relative overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-xl fade-in-section${rightVisible ? ' is-visible' : ''}`}
+              style={{ animationDelay: '0.3s' }}
+            >
+              <div className="card-header mb-8 text-center">
+                <h3 className="plan-name text-2xl font-bold mb-2 text-gray-800">カウンセリング</h3>
+                <p className="plan-description text-base text-gray-500">専門家による個別カウンセリング</p>
+              </div>
+              <div className="price text-4xl font-extrabold my-8 text-[#708fa6] text-center relative">¥10,000
+                <span className="block w-16 h-1 bg-gradient-to-r from-transparent via-[#708fa6] to-transparent mx-auto mt-2 rounded-full"></span>
+              </div>
+              <ul className="features list-none my-10 space-y-3">
+                <li className="relative pl-8 text-gray-700">検査結果の解説</li>
+                <li className="relative pl-8 text-gray-700">健康管理のアドバイス</li>
+                <li className="relative pl-8 text-gray-700">生活習慣の相談</li>
+              </ul>
+              <Link href="/reserve" className="block mt-auto">
+                <button className="cta-button w-full py-4 px-6 rounded-lg font-bold text-base bg-[#8fb3cc] text-white transition-all duration-300 hover:bg-[#708fa6]">このプランを選択</button>
+              </Link>
+            </div>
           </div>
           <div className="flex justify-center mt-12">
             <Link href="/reserve">
-              <Button size="lg" className="bg-primary text-white text-xl font-bold px-10 py-5 rounded-xl shadow-lg hover:bg-primary/80 hover:brightness-110 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200">
+              <Button size="lg" className="bg-[#708fa6] text-white text-xl font-bold px-10 py-5 rounded-xl shadow-lg hover:bg-[#5c7a91] hover:brightness-110 hover:shadow-2xl hover:-translate-y-1 transition-all duration-200">
                 検査・カウンセリング予約へ
               </Button>
             </Link>
@@ -284,9 +356,9 @@ export default function Home() {
       {/* 検査の流れ */}
       <section ref={flowFade.ref} id="process" className={`py-20 bg-gray-50 fade-in-section${flowFade.isMounted && flowFade.isVisible ? ' is-visible' : ''}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">検査の流れ</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-16 text-[#708fa6]">検査の流れ</h2>
 
-          <div className="flex flex-col md:flex-row justify-center items-start md:items-stretch gap-8 max-w-6xl mx-auto">
+          <div ref={flowRef} className="flex flex-col md:flex-row justify-center items-start md:items-stretch gap-8 max-w-6xl mx-auto">
             {[
               {
                 icon: <Calendar className="w-12 h-12 text-white" />, label: "予約", desc: "WEBまたは電話から簡単予約。希望の日時と提携クリニックを選択できます。"
@@ -301,7 +373,7 @@ export default function Home() {
                 icon: <FileCheck className="w-12 h-12 text-white" />, label: "結果通知", desc: "最短6日で結果をお届け。オプションでカウンセリングも受けられます。"
               },
             ].map((step, idx) => (
-              <div key={idx} className="flex-1 flex flex-col items-center text-center relative px-2">
+              <div key={idx} className={`flex-1 flex flex-col items-center text-center relative px-2 fade-in-section${flowVisible[idx] ? ' is-visible' : ''}`}> 
                 <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mb-4">
                   {step.icon}
                 </div>
@@ -318,7 +390,7 @@ export default function Home() {
       {/* 結果表見本 */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">結果表見本</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#708fa6]">結果表見本</h2>
           <div className="flex justify-center mb-8">
             <div className="w-full max-w-5xl h-[350px] md:h-[400px] bg-gray-200 rounded border border-gray-300 flex items-center justify-center">
               <span className="text-2xl md:text-3xl font-bold text-gray-800">結果表見本の図</span>
@@ -337,7 +409,7 @@ export default function Home() {
       {/* 受診可能クリニック */}
       <section ref={clinicsFade.ref} className={`py-20 bg-gray-50 fade-in-section${clinicsFade.isMounted && clinicsFade.isVisible ? ' is-visible' : ''}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">受診可能クリニック</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#708fa6]">受診可能クリニック</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* クリニック1 */}
             <div className="bg-white rounded-xl shadow p-6 flex flex-col">
@@ -413,7 +485,7 @@ export default function Home() {
       {/* お問い合わせフォーム */}
       <section ref={contactFade.ref} className={`py-20 bg-white fade-in-section${contactFade.isMounted && contactFade.isVisible ? ' is-visible' : ''}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10">お問い合わせ</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-[#708fa6]">お問い合わせ</h2>
           <ContactForm />
         </div>
       </section>
